@@ -1,0 +1,31 @@
+<script type="text/javascript">
+
+	var frm = $('#loginForm');
+	frm.submit(function(e){
+		$.post({
+			type: frm.attr('method'),
+			url: frm.attr('action'),
+			dataType: 'TEXT',
+			data: frm.serialize(), // serializes the form's elements.
+			success: function(data)
+			{
+               alert('Data:' + data); // show response from the php script.			   
+			}
+
+		});
+		e.preventDefault();
+	});
+</script>
+<div id="loginmodal" >
+	<h1>Client Area</h1>
+	<form method="post" id="loginForm" action="client_login.php">
+		<div class="controlWrap">
+			<label for="client_username">Username</label><input id="client_username" name="username" type="text" />
+		</div>
+		<div class="controlWrap">
+			<label for="client_password">Password</label><input id="client_password" name="password" type="password" />
+		</div>
+		<button type="submit" name="login" value="d">Login Now</button>
+		<button type="submit" name="forgot_password" value="true">Forgot Password?</button>
+	</form>
+</div>
